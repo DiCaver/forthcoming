@@ -12,7 +12,7 @@
 
 {include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
-<h2>{$pageTitle|escape}</h2>
+<h1>{$pageTitle|escape}</h1>
 <div class="page page_issue">
 	<ul class="cmp_article_list articles">
 	{foreach from=$forthcoming item=article}
@@ -26,10 +26,10 @@
 			<div class="obj_article_summary">
 				<h2 class="title">
 					<a id="article-{$article->getId()}" {if $journal}href="{url journal=$journal->getPath() page="article" op="view" path=$articlePath}"{else}href="{url page="article" op="view" path=$articlePath}"{/if}>
-						{$article->getLocalizedTitle()|strip_unsafe_html}
-						{if $article->getLocalizedSubtitle()}
+						{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html}
+						{if $publication->getLocalizedSubtitle()}
 							<span class="subtitle">
-								{$article->getLocalizedSubtitle()|escape}
+								{$publication->getLocalizedSubtitle(null, 'html')|strip_unsafe_html}
 							</span>
 						{/if}
 					</a>
